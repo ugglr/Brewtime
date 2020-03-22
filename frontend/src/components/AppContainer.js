@@ -13,8 +13,10 @@ const Body = styled.body`
   background-color: ${MAIN_BG};
 `;
 const ContentContainer = styled.div`
+  display: flex;
   flex: 1 0 auto;
   width: 100%;
+  justify-content: center;
 `;
 
 const AppContainer = props => {

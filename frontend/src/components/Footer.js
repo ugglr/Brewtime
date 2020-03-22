@@ -24,7 +24,7 @@ const Footer = () => {
   return (
     <FooterContainer>
       <NameContainer>
-        <h3>Brewtime</h3>
+        <h2>Brewtime.</h2>
       </NameContainer>
       <CopyContainer>
         <p>

@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+import { BLACK } from "./Theme/colors";
+
 const NavContainer = styled.nav`
   width: 100%;
   height: 6rem;
@@ -22,22 +24,35 @@ const UL = styled.ul`
 `;
 const LI = styled.li`
   display: inline;
-  padding: 8px 8px;
+  padding: 8px 16px;
   font-size: 1.2rem;
+`;
+
+const StyledLink = styled(Link)`
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: ${BLACK};
+
+  &:hover {
+    color: white;
+  }
 `;
 
 const Navbar = () => {
   return (
     <NavContainer>
       <LogoContainer>
-        <Link to='/'>
+        <StyledLink to='/'>
           <h2>Brewtime.</h2>
-        </Link>
+        </StyledLink>
       </LogoContainer>
       <LinksContainer>
         <UL>
           <LI>
-            <Link to='/auth'>Login / Sign Up</Link>
+            <StyledLink to='/'>Home</StyledLink>
+          </LI>
+          <LI>
+            <StyledLink to='/auth'>Login / Sign Up</StyledLink>
           </LI>
         </UL>
       </LinksContainer>
