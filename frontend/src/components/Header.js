@@ -1,21 +1,39 @@
 import React from "react";
 import styled from "styled-components";
 
+import { MAIN_BG, BLACK } from "./Theme/colors";
+
 const HeaderContainer = styled.div`
-  width: 100vw;
   height: 50vh;
-  background-color: red;
+  padding: 1.2em 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
-const Title = styled.h1``;
-const Title2 = styled.h1``;
-const Subtitle = styled.h3``;
+const TextContainer = styled.div``;
+const Title = styled.h1`
+  color: ${BLACK};
+  font-size: 7rem;
+  margin-bottom: 0px;
+`;
+const Title2 = styled.h1`
+  color: ${BLACK};
+  font-size: 4rem;
+`;
+const Subtitle = styled.h2`
+  color: ${BLACK};
+  font-size: 2rem;
+`;
 
 const Header = props => {
   return (
     <HeaderContainer>
-      <Title>{props.title}</Title>
-      <Title2>{props.title2}</Title2>
-      <Subtitle>{props.subtitle}</Subtitle>
+      <TextContainer>
+        <Title>{props.title}</Title>
+        <Title2>{props.title2}</Title2>
+        <Subtitle>{props.subtitle}</Subtitle>
+      </TextContainer>
     </HeaderContainer>
   );
 };

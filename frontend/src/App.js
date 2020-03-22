@@ -1,17 +1,24 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import AppContainer from "./components/AppContainer";
-import Header from "./components/Header";
+import LandingPage from "./components/Landing";
+import Auth from "./components/Auth";
 
 function App() {
   return (
-    <AppContainer>
-      <Header
-        title='Brewtime'
-        title2='Keep track of your pour-overs'
-        subtitle='Mumble mumble...'
-      />
-    </AppContainer>
+    <Router>
+      <AppContainer>
+        <Switch>
+          <Route path='/auth'>
+            <Auth />
+          </Route>
+          <Route path='/'>
+            <LandingPage />
+          </Route>
+        </Switch>
+      </AppContainer>
+    </Router>
   );
 }
 

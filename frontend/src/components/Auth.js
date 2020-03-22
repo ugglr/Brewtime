@@ -3,12 +3,12 @@ import styled from "styled-components";
 
 const Container = styled.div``;
 
-const Login = () => {
+const Auth = () => {
   return (
     <Container>
-      <h1>Login</h1>
+      <h1>Auth</h1>
     </Container>
   );
 };
 
-export default Login;
+export default Auth;
