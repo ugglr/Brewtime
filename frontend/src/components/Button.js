@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-import { FERN_GREEN as PrimaryColor } from "./Theme/colors";
+import { FERN_GREEN as PrimaryColor, PULLMAN_GREEN } from "./Theme/colors";
 
 const Button = styled.button`
   background: transparent;
@@ -20,8 +20,8 @@ const Button = styled.button`
       color: white;
 
       &:hover {
-        background: transparent;
-        color: ${PrimaryColor};
+        background: ${PULLMAN_GREEN};
+        border: 2px solid ${PULLMAN_GREEN};
       }
     `};
 `;

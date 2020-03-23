@@ -12,10 +12,10 @@ const NavContainer = styled.nav`
   justify-content: space-between;
 `;
 const LogoContainer = styled.div`
-  margin-left: 5rem;
+  margin-left: 4rem;
 `;
 const LinksContainer = styled.div`
-  margin-right: 5rem;
+  margin-right: 4rem;
 `;
 const UL = styled.ul`
   list-style-type: none;
@@ -38,7 +38,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const Navbar = () => {
+const Navbar = props => {
   return (
     <NavContainer>
       <LogoContainer>
@@ -46,16 +46,18 @@ const Navbar = () => {
           <h2>Brewtime.</h2>
         </StyledLink>
       </LogoContainer>
-      <LinksContainer>
-        <UL>
-          <LI>
-            <StyledLink to='/'>Home</StyledLink>
-          </LI>
-          <LI>
-            <StyledLink to='/auth'>Login / Sign Up</StyledLink>
-          </LI>
-        </UL>
-      </LinksContainer>
+      {props.showLinks && (
+        <LinksContainer>
+          <UL>
+            <LI>
+              <StyledLink to='/'>Home</StyledLink>
+            </LI>
+            <LI>
+              <StyledLink to='/auth'>Login/Sign Up</StyledLink>
+            </LI>
+          </UL>
+        </LinksContainer>
+      )}
     </NavContainer>
   );
 };

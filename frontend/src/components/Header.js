@@ -29,7 +29,9 @@ const Subtitle = styled.h2`
   color: ${BLACK};
   font-size: 2rem;
 `;
-const SubscribeFormContainer = styled.div``;
+const SubscribeFormContainer = styled.div`
+  margin-top: 2rem;
+`;
 
 const Header = props => {
   return (
