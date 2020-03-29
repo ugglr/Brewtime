@@ -1,18 +1,25 @@
 import React from 'react';
-import {Text} from 'react-native';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
+
+import {MAIN_BG, BLACK} from '../theme/colors';
 
 const Container = styled.View`
   width: 100%;
   height: 100%;
   justify-content: center;
   align-items: center;
+  background-color: ${MAIN_BG};
+`;
+const Title = styled.Text`
+  font-size: 36px;
+  font-weight: 600;
+  color: ${BLACK};
 `;
 
 const SplashScreen = () => {
   return (
     <Container>
-      <Text>Brewtime</Text>
+      <Title>Brewtime</Title>
     </Container>
   );
 };

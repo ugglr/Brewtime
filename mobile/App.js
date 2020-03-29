@@ -4,13 +4,13 @@ import {NavigationContainer} from '@react-navigation/native';
 import styled from 'styled-components';
 import {View, Text, StatusBar} from 'react-native';
 
+import SplashScreen from './src/screens/Splash';
+
 const App = () => {
   return (
     <NavigationContainer>
       <StatusBar barStyle="dark-content" />
-      <View>
-        <Text>Brewtime</Text>
-      </View>
+      <SplashScreen />
     </NavigationContainer>
   );
 };
