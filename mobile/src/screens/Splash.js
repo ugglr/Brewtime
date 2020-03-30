@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import AsyncStorage from '@react-native-community/async-storage';
 import {Button} from 'react-native';
 import styled from 'styled-components/native';
 

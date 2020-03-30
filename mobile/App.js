@@ -32,10 +32,10 @@ function AuthStack() {
 }
 
 const App = () => {
+  const foo = false;
+
   return (
-    <NavigationContainer>
-      <AuthStack />
-    </NavigationContainer>
+    <NavigationContainer>{!foo ? <AuthStack /> : <></>}</NavigationContainer>
   );
 };
 

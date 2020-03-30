@@ -1,4 +1,5 @@
 import React from 'react';
+import AsyncStorage from '@react-native-community/async-storage';
 import {View, Button} from 'react-native';
 
 import {ScreenContainer} from '../theme/Containers';
