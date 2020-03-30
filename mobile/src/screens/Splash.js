@@ -1,14 +1,13 @@
 import React from 'react';
+import {Button} from 'react-native';
 import styled from 'styled-components/native';
 
-import {MAIN_BG, BLACK} from '../theme/colors';
+import {ScreenContainer} from '../theme/Containers';
+import {BLACK} from '../theme/colors';
 
-const Container = styled.View`
-  width: 100%;
-  height: 100%;
+const Container = styled(ScreenContainer)`
   justify-content: center;
   align-items: center;
-  background-color: ${MAIN_BG};
 `;
 const Title = styled.Text`
   font-size: 36px;
@@ -16,10 +15,13 @@ const Title = styled.Text`
   color: ${BLACK};
 `;
 
-const SplashScreen = () => {
+const SplashScreen = props => {
+  const {navigation} = props;
+
   return (
     <Container>
       <Title>Brewtime</Title>
+      <Button title="Button" onPress={() => navigation.navigate('Login')} />
     </Container>
   );
 };
