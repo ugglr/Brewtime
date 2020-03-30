@@ -1,12 +1,11 @@
 import React from 'react';
-
-import {ScreenContainer, Title} from '../theme/Containers';
+import {View, Text} from 'react-native';
 
 const Home = () => {
   return (
-    <>
-      <Title>Hello</Title>
-    </>
+    <View>
+      <Text>Home</Text>
+    </View>
   );
 };
 
