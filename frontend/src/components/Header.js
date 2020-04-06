@@ -6,11 +6,11 @@ import SubscribeForm from "./SubscribeForm";
 
 import { BLACK } from "./Theme/colors";
 
-const url =
+const MAILCHIMP_URL =
   "https://app.us19.list-manage.com/subscribe/post?u=d14a388ae39a3ae53bff9dc31&amp;id=87fb0a61c2";
 
 const HeaderContainer = styled.div`
-  height: 45vh;
+  height: 70vh;
   padding: 1.2em 1.2rem;
   display: flex;
   flex-direction: column;
@@ -44,7 +44,7 @@ const Header = props => {
       {props.subscribeForm && (
         <SubscribeFormContainer>
           <MailchimpSubscribe
-            url={url}
+            url={MAILCHIMP_URL}
             render={({ subscribe, status, message }) => (
               <SubscribeForm
                 status={status}

@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import Button from "./Button";
 
-import { FERN_GREEN } from "./Theme/colors";
+import { MAIN_BG, FERN_GREEN, BLACK } from "./Theme/colors";
 
 const Container = styled.div`
   display: flex;
@@ -11,13 +11,23 @@ const Container = styled.div`
 `;
 const CallToActionText = styled.p`
   font-size: 1.3rem;
+  margin-bottom: 2.5rem;
 `;
 const InputContainer = styled.div`
   display: flex;
 `;
 const StyledInput = styled.input`
-  padding: 8px;
-  font-size: 1.8rem;
+  height: 45px;
+  width: 400px;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 1.5rem;
+  background-color: white;
+  border-style: none;
+
+  ::placeholder {
+    color: ${BLACK};
+  }
 `;
 const ErrorContainer = styled.div``;
 
@@ -40,10 +50,10 @@ const SubscribeForm = ({ status, message, onValidated }) => {
         <StyledInput
           ref={node => (email = node)}
           type='email'
-          placeholder='Email Subscribe! '
+          placeholder='Enter Email'
         />
         <Button primary onClick={submit}>
-          Submit
+          Subscribe!
         </Button>
       </InputContainer>
 
