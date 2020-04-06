@@ -5,7 +5,7 @@ import { FERN_GREEN as PrimaryColor, PULLMAN_GREEN } from "./Theme/colors";
 
 const Button = styled.button`
   background: transparent;
-  border-radius: 3px;
+  border-radius: 12px;
   border: 2px solid ${PrimaryColor};
   color: ${PrimaryColor};
   margin: 0 1em;
