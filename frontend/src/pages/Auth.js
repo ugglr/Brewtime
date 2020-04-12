@@ -7,28 +7,41 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
   margin-top: 10rem;
+  padding-top: 50px;
   width: 30rem;
   height: 30rem;
   border-radius: 50px;
   background: #e9e5e2;
   box-shadow: 20px 20px 60px #c6c3c0, -20px -20px 60px #ffffff;
 `;
+const SwitcherContainer = styled.div`
+  display: flex;
+  width: 70%;
+  justify-content: space-evenly;
+  margin-bottom: 2rem;
+`;
+const Title = styled.h2``;
 const FieldsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: red;
 `;
 const FieldWrapper = styled.div`
-  height: 50px;
-  background-color: blue;
+  height: 55px;
+  width: 50%;
+  margin-bottom: 16px;
+`;
+const Label = styled.p`
+  margin: 0;
 `;
 
 const Auth = () => {
   return (
     <Container>
-      <h1>Auth</h1>
+      <SwitcherContainer>
+        <Title>Login</Title>
+        <Title>Sign Up</Title>
+      </SwitcherContainer>
       <Formik
         initialValues={{ email: "", password: "" }}
         validate={(values) => {
@@ -53,17 +66,19 @@ const Auth = () => {
           <Form>
             <FieldsContainer>
               <FieldWrapper>
+                <Label>Email</Label>
                 <Field type='email' name='email' />
                 <ErrorMessage name='email' component='div' />
               </FieldWrapper>
               <FieldWrapper>
+                <Label>Password</Label>
                 <Field type='password' name='password' />
                 <ErrorMessage name='password' component='div' />
               </FieldWrapper>
-              <button type='submit' disabled={isSubmitting}>
-                Submit
-              </button>
             </FieldsContainer>
+            <button type='submit' disabled={isSubmitting}>
+              Submit
+            </button>
           </Form>
         )}
       </Formik>
