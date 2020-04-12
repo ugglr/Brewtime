@@ -24,6 +24,7 @@ const SwitcherContainer = styled.div`
 const SwitchButton = styled.div`
   height: 50px;
   width: 100px;
+  cursor: pointer;
   background-color: red;
 `;
 const Title = styled.h2``;
@@ -33,8 +34,9 @@ const FieldsContainer = styled.div`
 `;
 const FieldWrapper = styled.div`
   height: 55px;
-  width: 50%;
+  width: 100%;
   margin-bottom: 16px;
+  background-color: blue;
 `;
 const Label = styled.p`
   margin: 0;
@@ -120,13 +122,18 @@ const Auth = () => {
             <Form>
               <FieldsContainer>
                 <FieldWrapper>
-                  <Label>User Email</Label>
+                  <Label>Your Email</Label>
                   <Field type='email' name='email' />
                   <ErrorMessage name='email' component='div' />
                 </FieldWrapper>
                 <FieldWrapper>
                   <Label>Password</Label>
                   <Field type='password' name='password' />
+                  <ErrorMessage name='password' component='div' />
+                </FieldWrapper>
+                <FieldWrapper>
+                  <Label>Retype Password</Label>
+                  <Field type='password' name='passwordCheck' />
                   <ErrorMessage name='password' component='div' />
                 </FieldWrapper>
               </FieldsContainer>
