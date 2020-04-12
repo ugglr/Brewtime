@@ -2,8 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import AppContainer from "./components/AppContainer";
-import LandingPage from "./components/Landing";
-import Auth from "./components/Auth";
+import LandingPage from "./pages/Landing";
+import Auth from "./pages/Auth";
 
 function App() {
   return (

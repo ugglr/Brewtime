@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-import Header from "./Header";
-import FeatureBlock from "./FeatureBlock";
+import Header from "../components/Header";
+import FeatureBlock from "../components/FeatureBlock";
 
 const Container = styled.div`
   justify-content: center;

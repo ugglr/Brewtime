@@ -7,43 +7,43 @@ const featurePoints = [
   {
     title: "Beans",
     subtitle:
-      "Dark, Medium, Light; Kenya, Columbia, Yunnan; What are you brewing with?"
+      "Dark, Medium, Light; Kenya, Columbia, Yunnan; What are you brewing with?",
   },
   {
     title: "Water",
     subtitle:
-      "Have you ever payed any attention to the water you are brewing with?"
+      "Have you ever payed any attention to the water you are brewing with?",
   },
   {
     title: "Equipment",
-    subtitle: "What's your kit? Chemex, V60, Melitta. Spoon, no spoon?"
+    subtitle: "What's your kit? Chemex, V60, Melitta. Spoon, no spoon?",
   },
   {
     title: "Ratio",
-    subtitle: "Only grams per liter, everything else is unscientific."
+    subtitle: "Only grams per liter, everything else is unscientific.",
   },
   {
     title: "Phases",
     subtitle:
-      "What's your bloom time? Phase 1, Phase 2, Phase 3, or just pour it in?"
+      "What's your bloom time? Phase 1, Phase 2, Phase 3, or just pour it in?",
   },
   {
     title: "Drawdown",
     subtitle:
-      "Do you watch as your slurry runs dry, or time to check some emails?"
-  }
+      "Do you watch as your slurry runs dry, or time to check some emails?",
+  },
 ];
 
 const FeatureContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 3rem;
 `;
 
 const Title = styled.h1`
   font-size: 2.7rem;
   color: ${BLACK};
-  margin-top: 3rem;
   margin-bottom: 3rem;
 `;
 

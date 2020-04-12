@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import Button from "./Button";
 
-import { MAIN_BG, FERN_GREEN, BLACK } from "./Theme/colors";
+import { FERN_GREEN, BLACK } from "./Theme/colors";
 
 const Container = styled.div`
   display: flex;
@@ -37,7 +37,7 @@ const SubscribeForm = ({ status, message, onValidated }) => {
     email &&
     email.value.indexOf("@") > -1 &&
     onValidated({
-      EMAIL: email.value
+      EMAIL: email.value,
     });
 
   return (
@@ -48,7 +48,7 @@ const SubscribeForm = ({ status, message, onValidated }) => {
       </CallToActionText>
       <InputContainer>
         <StyledInput
-          ref={node => (email = node)}
+          ref={(node) => (email = node)}
           type='email'
           placeholder='Enter Email'
         />

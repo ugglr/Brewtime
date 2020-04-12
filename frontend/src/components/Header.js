@@ -33,7 +33,7 @@ const SubscribeFormContainer = styled.div`
   margin-top: 2rem;
 `;
 
-const Header = props => {
+const Header = (props) => {
   return (
     <HeaderContainer>
       <TextContainer>
@@ -49,7 +49,7 @@ const Header = props => {
               <SubscribeForm
                 status={status}
                 message={message}
-                onValidated={formData => subscribe(formData)}
+                onValidated={(formData) => subscribe(formData)}
               />
             )}
           />
