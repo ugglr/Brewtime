@@ -1,6 +1,8 @@
+const hello = require("./hello");
+
 const resolvers = {
   Query: {
-    hello: () => "Hello World!",
+    hello,
   },
 };
 
