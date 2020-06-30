@@ -2,19 +2,18 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "server": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "nodemon src/server.js",
+    "test": "test"
   },
-  "keywords": [],
-  "author": "",
+  "author": "ugglr",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^4.0.1",
-    "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.5",
-    "nodemon": "^2.0.2"
+    "apollo-server-express": "^2.15.1",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
