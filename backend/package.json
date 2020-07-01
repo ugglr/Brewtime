@@ -4,18 +4,23 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "server": "nodemon src/server.js",
+    "server": "nodemon --exec babel-node src/server.js",
     "test": "test"
   },
   "author": "ugglr",
   "license": "ISC",
   "dependencies": {
     "apollo-server-express": "^2.15.1",
+    "bcrypt": "^5.0.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.9.20"
   },
   "devDependencies": {
+    "@babel/cli": "^7.10.4",
+    "@babel/core": "^7.10.4",
+    "@babel/node": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
     "nodemon": "^2.0.4"
   }
 }

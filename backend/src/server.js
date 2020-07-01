@@ -1,11 +1,11 @@
 require('dotenv').config();
 // Express
-const express = require('express');
-const mongoose = require('mongoose');
+import express from 'express';
+import mongoose from 'mongoose';
 // Apollo / GQL
-const { ApolloServer, gql } = require('apollo-server-express');
-const typeDefs = require('./graphql/typeDefs');
-const resolvers = require('./graphql/resolvers');
+import { ApolloServer, gql } from 'apollo-server-express';
+import { typeDefs } from './graphql/typeDefs';
+import { resolvers } from './graphql/resolvers';
 
 const startServer = async () => {
   console.log('[SERVER] Starting express server...');
@@ -24,6 +24,7 @@ const startServer = async () => {
   mongoose
     .connect(`${process.env.MONGO_CONNECTION_STRING}`, {
       useNewUrlParser: true,
+      useUnifiedTopology: true,
     })
     .then(() =>
       app.listen({ port: 4000 }, () =>

@@ -1,9 +1,7 @@
-const hello = require("./hello");
+// User Related resolvers
+import { createUser, users, findUserByEmail } from './users';
 
-const resolvers = {
-  Query: {
-    hello,
-  },
+export const resolvers = {
+  Query: { users, findUserByEmail },
+  Mutation: { createUser },
 };
-
-module.exports = resolvers;
