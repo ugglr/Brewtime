@@ -23,7 +23,7 @@ export const createUser = async (_, { email, password }) => {
     });
     // Saving the user to DB and storing the result from the save
     const saveResult = await newUser.save();
-    console.log('[GQL] This new user was saved to the DB!', saveResult);
+    console.log('[GQL] This user was saved to the DB!', saveResult);
     // Do not return the hashed password
     saveResult.password = null;
     return saveResult;
@@ -42,12 +42,13 @@ export const users = async () => {
   try {
     const searchResult = await User.find();
     // searchResult.password = null;
-    searchResult.map((user) => {
+    searchResult.forEach((user) => {
       user.password = null;
     });
     return searchResult;
   } catch (err) {
-    throw err;
+    console.log('[GQL] Something went wrong while searching for users...');
+    throw new Error(err);
   }
 };
 
@@ -62,6 +63,7 @@ export const findUserByEmail = async (_, { email }) => {
     hasUser.password = null;
     return hasUser;
   } catch (err) {
-    throw err;
+    console.log('[GQL] Something went wrong while searching for user...');
+    throw new Error(err);
   }
 };
