@@ -6,7 +6,7 @@ import { User } from '../../models/User';
 // ########################################################################
 
 // MUTATION: Created a user with the given email and password
-export const createUser = async (_, { email, password }) => {
+export const register = async (_, { email, password }) => {
   console.log('[GQL] We are creating a new user!');
   try {
     // Search for existing users
@@ -30,6 +30,23 @@ export const createUser = async (_, { email, password }) => {
   } catch (createUserError) {
     console.log('[Gql] Error creating a new user:', createUserError);
     throw new Error(createUserError);
+  }
+};
+
+export const deleteUserByEmail = async (_, { email }) => {
+  try {
+    console.log('[GQL] We are deleting the user with email: ', email);
+    const deleteResult = await User.findOneAndDelete({ email });
+    console.log('[GQL] Result', deleteResult);
+    if (!deleteResult) {
+      console.log('[GQL] User was not found');
+      throw new Error('That user does not exist...');
+    }
+    deleteResult.password = null;
+    return deleteResult;
+  } catch (deleteUserError) {
+    console.log('[GQL] Problem with deleting user...', deleteUserError);
+    throw new Error(deleteUserError);
   }
 };
 
