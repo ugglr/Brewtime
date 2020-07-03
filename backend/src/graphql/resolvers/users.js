@@ -8,6 +8,7 @@ import { User } from '../../models/User';
 // MUTATION: Created a user with the given email and password
 export const register = async (_, { email, password }) => {
   console.log('[GQL] We are creating a new user!');
+
   try {
     // Search for existing users
     const hasUser = await User.findOne({ email });
@@ -17,9 +18,11 @@ export const register = async (_, { email, password }) => {
     // Hash the password with bcrypt
     const hashedPassword = await bcrypt.hash(password, 12);
     // Create the new user object
+    // All new users will have the "public" permission
     const newUser = new User({
       email: email,
       password: hashedPassword,
+      permission: 'public',
     });
     // Saving the user to DB and storing the result from the save
     const saveResult = await newUser.save();
@@ -30,6 +33,38 @@ export const register = async (_, { email, password }) => {
   } catch (createUserError) {
     console.log('[Gql] Error creating a new user:', createUserError);
     throw new Error(createUserError);
+  }
+};
+
+// Updates a user by the email
+export const updateUser = async (_, { email, permission }) => {
+  const VALID_PERMISSIONS = ['admin', 'public'];
+  const updateObject = {};
+
+  console.log('[GQL] We are updating a user with the email: ', email);
+
+  if (permission && !VALID_PERMISSIONS.includes(permission.toLowerCase())) {
+    throw new Error(`Only [${VALID_PERMISSIONS.toString(' ')}] are permitted`);
+  }
+  if (permission && VALID_PERMISSIONS.includes(permission.toLowerCase())) {
+    updateObject.permission = permission.toLowerCase();
+  }
+
+  try {
+    const updatedUser = await User.findOneAndUpdate({ email }, updateObject, {
+      new: true,
+      useFindAndModify: false,
+    });
+
+    updatedUser.password = null;
+
+    console.log('The updated user', updatedUser);
+    return updatedUser;
+  } catch (updateUserError) {
+    throw new Error(
+      '[GQL] Something went wrong updating the user...',
+      updateUserError
+    );
   }
 };
 
