@@ -37,7 +37,7 @@ export const register = async (_, { email, password }) => {
 };
 
 // Updates a user by the email
-export const updateUser = async (_, { email, permission }) => {
+export const updateUserPermission = async (_, { email, permission }) => {
   const VALID_PERMISSIONS = ['admin', 'public'];
   const updateObject = {};
 

@@ -15,7 +15,7 @@ export const typeDefs = gql`
     # Removed a user from the db by passing the user email
     deleteUserByEmail(email: String!): User
     # Updates a valid users document by passing the user email
-    updateUser(email: String!, permission: String): User
+    updateUserPermission(email: String!, permission: String!): User
   }
   ###### TYPES ##########################
   #User type
