@@ -10,10 +10,12 @@ export const typeDefs = gql`
   # Mutations
   type Mutation {
     ###### USER RELATED MUTATIONS #######
-    # Adds a User to db with the given email and password
+    # Adds a User to db with the given email and password. Permission will be set to public.
     register(email: String!, password: String!): User!
     # Removed a user from the db by passing the user email
     deleteUserByEmail(email: String!): User
+    # Updates a valid users document by passing the user email
+    updateUserPermission(email: String!, permission: String!): User
   }
   ###### TYPES ##########################
   #User type
@@ -21,5 +23,6 @@ export const typeDefs = gql`
     _id: ID!
     email: String!
     password: String
+    permission: String!
   }
 `;
