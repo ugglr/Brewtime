@@ -50,8 +50,6 @@ export const login = async (_, { email, password }) => {
     if (!validPassword) throw new Error('Wrong credentials...');
 
     const timeNow = new Date().toISOString();
-    console.log('timeNow', timeNow);
-
     const { _id: id } = hasUser;
 
     // If email and password is correct send back JWT
@@ -61,7 +59,7 @@ export const login = async (_, { email, password }) => {
     );
     return token;
   } catch (loginError) {
-    throw new Error('[GQL] Something went wrong logging in...');
+    throw new Error(loginError);
   }
 };
 
