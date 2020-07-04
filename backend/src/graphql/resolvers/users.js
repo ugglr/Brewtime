@@ -1,4 +1,5 @@
 import bcrypt from 'bcrypt';
+const jwt = require('jsonwebtoken');
 import { User } from '../../models/User';
 
 // ########################################################################
@@ -36,8 +37,32 @@ export const register = async (_, { email, password }) => {
 };
 
 export const login = async (_, { email, password }) => {
-  console.log(email);
-  console.log(password);
+  console.log('[GQL] We are logging in somebody...');
+
+  try {
+    const hasUser = await User.findOne({ email });
+    console.log(hasUser);
+    // Check if user exists
+    if (!hasUser) throw new Error('Wrong credentials...');
+    console.log('user found...');
+    // Check if the password is correct
+    const validPassword = await bcrypt.compare(password, hasUser.password);
+    if (!validPassword) throw new Error('Wrong credentials...');
+
+    const timeNow = new Date().toISOString();
+    console.log('timeNow', timeNow);
+
+    const { _id: id } = hasUser;
+
+    // If email and password is correct send back JWT
+    const token = jwt.sign(
+      { id, email, timeAtLogin: timeNow },
+      process.env.VERY_SECRET_JWT_SECRET
+    );
+    return token;
+  } catch (loginError) {
+    throw new Error('[GQL] Something went wrong logging in...');
+  }
 };
 
 // Updates a user by the email
