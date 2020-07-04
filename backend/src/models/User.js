@@ -14,6 +14,10 @@ const userSchema = {
     type: String,
     required: true,
   },
+  lastLoginDate: {
+    type: Date,
+    required: false,
+  },
 };
 
 export const User = mongoose.model('User', userSchema);
