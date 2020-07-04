@@ -1,6 +1,7 @@
 // User Related resolvers
 import {
   register,
+  login,
   users,
   findUserByEmail,
   deleteUserByEmail,
@@ -9,5 +10,5 @@ import {
 
 export const resolvers = {
   Query: { users, findUserByEmail },
-  Mutation: { register, deleteUserByEmail, updateUserPermission },
+  Mutation: { register, deleteUserByEmail, updateUserPermission, login },
 };

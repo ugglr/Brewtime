@@ -5,10 +5,9 @@ import { User } from '../../models/User';
 // MUTATIONS
 // ########################################################################
 
-// MUTATION: Created a user with the given email and password
+// MUTATION: Creates a user with the given email and password
 export const register = async (_, { email, password }) => {
   console.log('[GQL] We are creating a new user!');
-
   try {
     // Search for existing users
     const hasUser = await User.findOne({ email });
@@ -34,6 +33,11 @@ export const register = async (_, { email, password }) => {
     console.log('[Gql] Error creating a new user:', createUserError);
     throw new Error(createUserError);
   }
+};
+
+export const login = async (_, { email, password }) => {
+  console.log(email);
+  console.log(password);
 };
 
 // Updates a user by the email
