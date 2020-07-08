@@ -1,7 +1,8 @@
 import bcrypt from 'bcrypt';
-import { AuthenticationError } from 'apollo-server-express';
 const jwt = require('jsonwebtoken');
 import { User } from '../../models/User';
+// Helpers
+import { hasPermission } from '../helpers/auth';
 
 // ########################################################################
 // MUTATIONS
@@ -65,17 +66,33 @@ export const login = async (_, { email, password }) => {
 };
 
 // Updates a user by the email
-export const updateUserPermission = async (_, { email, permission }) => {
+export const updateUserPermission = async (
+  _,
+  { email, newPermission },
+  { user }
+) => {
+  try {
+    hasPermission(user);
+  } catch (permissionsError) {
+    throw new Error(permissionsError);
+  }
+
   const VALID_PERMISSIONS = ['admin', 'public'];
   const updateObject = {};
 
   console.log('[GQL] We are updating a user with the email: ', email);
 
-  if (permission && !VALID_PERMISSIONS.includes(permission.toLowerCase())) {
+  if (
+    newPermission &&
+    !VALID_PERMISSIONS.includes(newPermission.toLowerCase())
+  ) {
     throw new Error(`Only [${VALID_PERMISSIONS.toString(' ')}] are permitted`);
   }
-  if (permission && VALID_PERMISSIONS.includes(permission.toLowerCase())) {
-    updateObject.permission = permission.toLowerCase();
+  if (
+    newPermission &&
+    VALID_PERMISSIONS.includes(newPermission.toLowerCase())
+  ) {
+    updateObject.permission = newPermission.toLowerCase();
   }
 
   try {
@@ -96,7 +113,13 @@ export const updateUserPermission = async (_, { email, permission }) => {
   }
 };
 
-export const deleteUserByEmail = async (_, { email }) => {
+export const deleteUserByEmail = async (_, { email }, { user }) => {
+  try {
+    hasPermission(user);
+  } catch (permissionsError) {
+    throw new Error(permissionsError);
+  }
+
   try {
     console.log('[GQL] We are deleting the user with email: ', email);
     const deleteResult = await User.findOneAndDelete({ email });
@@ -118,12 +141,13 @@ export const deleteUserByEmail = async (_, { email }) => {
 // ########################################################################
 
 // QUERY: Returns all Users in the DB
-export const users = async (_, __, { user: { permission } }) => {
-  console.log('[GQL] get all users query with permission: ', permission);
-  if (permission !== 'admin')
-    throw new AuthenticationError(
-      'You do not have permission for this action.'
-    );
+export const users = async (_, __, { user }) => {
+  try {
+    hasPermission(user);
+  } catch (permissionsError) {
+    throw new Error(permissionsError);
+  }
+
   try {
     const searchResult = await User.find();
     // searchResult.password = null;
@@ -139,6 +163,12 @@ export const users = async (_, __, { user: { permission } }) => {
 
 // QUERY: Find a user by email
 export const findUserByEmail = async (_, { email }) => {
+  try {
+    hasPermission(user);
+  } catch (permissionsError) {
+    throw new Error(permissionsError);
+  }
+
   try {
     const hasUser = await User.findOne({ email });
     if (!hasUser) {

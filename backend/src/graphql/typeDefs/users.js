@@ -6,7 +6,7 @@ register(email: String!, password: String!): User!
 deleteUserByEmail(email: String!): User
 
 # Updates a valid users document by passing the user email
-updateUserPermission(email: String!, permission: String!): User
+updateUserPermission(email: String!, newPermission: String!): User
 
 # Checks the credentials, and sends back a JWT
 login(email: String!, password: String!): AuthPayload!
