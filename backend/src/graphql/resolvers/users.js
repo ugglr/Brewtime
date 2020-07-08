@@ -1,4 +1,5 @@
 import bcrypt from 'bcrypt';
+import { AuthenticationError } from 'apollo-server-express';
 const jwt = require('jsonwebtoken');
 import { User } from '../../models/User';
 
@@ -50,14 +51,14 @@ export const login = async (_, { email, password }) => {
     if (!validPassword) throw new Error('Wrong credentials...');
 
     const timeNow = new Date().toISOString();
-    const { _id: id } = hasUser;
+    const { _id: id, permission } = hasUser;
 
     // If email and password is correct send back JWT
     const token = jwt.sign(
-      { id, email, timeAtLogin: timeNow },
+      { id, email, permission, timeAtLogin: timeNow },
       process.env.VERY_SECRET_JWT_SECRET
     );
-    return token;
+    return { authToken: token };
   } catch (loginError) {
     throw new Error(loginError);
   }
@@ -117,7 +118,12 @@ export const deleteUserByEmail = async (_, { email }) => {
 // ########################################################################
 
 // QUERY: Returns all Users in the DB
-export const users = async () => {
+export const users = async (_, __, { user: { permission } }) => {
+  console.log('[GQL] get all users query with permission: ', permission);
+  if (permission !== 'admin')
+    throw new AuthenticationError(
+      'You do not have permission for this action.'
+    );
   try {
     const searchResult = await User.find();
     // searchResult.password = null;

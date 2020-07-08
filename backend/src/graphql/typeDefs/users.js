@@ -9,7 +9,7 @@ deleteUserByEmail(email: String!): User
 updateUserPermission(email: String!, permission: String!): User
 
 # Checks the credentials, and sends back a JWT
-login(email: String!, password: String!): String
+login(email: String!, password: String!): AuthPayload!
 `;
 
 export const userQueries = `
@@ -23,5 +23,8 @@ type User {
   email: String!
   password: String
   permission: String!
+}
+type AuthPayload {
+  authToken: String!
 }
 `;
