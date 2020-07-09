@@ -7,12 +7,23 @@ import { ApolloServer, gql } from 'apollo-server-express';
 import { typeDefs } from './graphql/typeDefs';
 import { resolvers } from './graphql/resolvers';
 
+import { decodeToken } from './util';
+
 const startServer = async () => {
   console.log('[SERVER] Starting express server...');
   const app = express();
 
   console.log('[SERVER] Starting apollo server...');
-  const server = new ApolloServer({ typeDefs, resolvers });
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    context: ({ req }) => {
+      const token = req.headers.authorization || '';
+      const payload = decodeToken(token);
+
+      return { user: payload };
+    },
+  });
 
   // Apply Middlewares
   console.log('[SERVER] Applying middleware...');

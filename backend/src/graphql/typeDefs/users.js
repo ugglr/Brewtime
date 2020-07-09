@@ -6,10 +6,10 @@ register(email: String!, password: String!): User!
 deleteUserByEmail(email: String!): User
 
 # Updates a valid users document by passing the user email
-updateUserPermission(email: String!, permission: String!): User
+updateUserPermission(email: String!, newPermission: String!): User
 
 # Checks the credentials, and sends back a JWT
-login(email: String!, password: String!): String
+login(email: String!, password: String!): AuthPayload!
 `;
 
 export const userQueries = `
@@ -23,5 +23,8 @@ type User {
   email: String!
   password: String
   permission: String!
+}
+type AuthPayload {
+  authToken: String!
 }
 `;

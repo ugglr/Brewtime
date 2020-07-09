@@ -1,6 +1,8 @@
 import bcrypt from 'bcrypt';
 const jwt = require('jsonwebtoken');
 import { User } from '../../models/User';
+// Helpers
+import { hasPermission } from '../helpers/auth';
 
 // ########################################################################
 // MUTATIONS
@@ -50,31 +52,47 @@ export const login = async (_, { email, password }) => {
     if (!validPassword) throw new Error('Wrong credentials...');
 
     const timeNow = new Date().toISOString();
-    const { _id: id } = hasUser;
+    const { _id: id, permission } = hasUser;
 
     // If email and password is correct send back JWT
     const token = jwt.sign(
-      { id, email, timeAtLogin: timeNow },
+      { id, email, permission, timeAtLogin: timeNow },
       process.env.VERY_SECRET_JWT_SECRET
     );
-    return token;
+    return { authToken: token };
   } catch (loginError) {
     throw new Error(loginError);
   }
 };
 
 // Updates a user by the email
-export const updateUserPermission = async (_, { email, permission }) => {
+export const updateUserPermission = async (
+  _,
+  { email, newPermission },
+  { user }
+) => {
+  try {
+    hasPermission(user);
+  } catch (permissionsError) {
+    throw new Error(permissionsError);
+  }
+
   const VALID_PERMISSIONS = ['admin', 'public'];
   const updateObject = {};
 
   console.log('[GQL] We are updating a user with the email: ', email);
 
-  if (permission && !VALID_PERMISSIONS.includes(permission.toLowerCase())) {
+  if (
+    newPermission &&
+    !VALID_PERMISSIONS.includes(newPermission.toLowerCase())
+  ) {
     throw new Error(`Only [${VALID_PERMISSIONS.toString(' ')}] are permitted`);
   }
-  if (permission && VALID_PERMISSIONS.includes(permission.toLowerCase())) {
-    updateObject.permission = permission.toLowerCase();
+  if (
+    newPermission &&
+    VALID_PERMISSIONS.includes(newPermission.toLowerCase())
+  ) {
+    updateObject.permission = newPermission.toLowerCase();
   }
 
   try {
@@ -95,7 +113,13 @@ export const updateUserPermission = async (_, { email, permission }) => {
   }
 };
 
-export const deleteUserByEmail = async (_, { email }) => {
+export const deleteUserByEmail = async (_, { email }, { user }) => {
+  try {
+    hasPermission(user);
+  } catch (permissionsError) {
+    throw new Error(permissionsError);
+  }
+
   try {
     console.log('[GQL] We are deleting the user with email: ', email);
     const deleteResult = await User.findOneAndDelete({ email });
@@ -117,7 +141,13 @@ export const deleteUserByEmail = async (_, { email }) => {
 // ########################################################################
 
 // QUERY: Returns all Users in the DB
-export const users = async () => {
+export const users = async (_, __, { user }) => {
+  try {
+    hasPermission(user);
+  } catch (permissionsError) {
+    throw new Error(permissionsError);
+  }
+
   try {
     const searchResult = await User.find();
     // searchResult.password = null;
@@ -132,7 +162,13 @@ export const users = async () => {
 };
 
 // QUERY: Find a user by email
-export const findUserByEmail = async (_, { email }) => {
+export const findUserByEmail = async (_, { email }, { user }) => {
+  try {
+    hasPermission(user);
+  } catch (permissionsError) {
+    throw new Error(permissionsError);
+  }
+
   try {
     const hasUser = await User.findOne({ email });
     if (!hasUser) {
