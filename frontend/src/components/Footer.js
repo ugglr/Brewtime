@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-import { BLACK, FERN_GREEN, MAIN_BG } from "./Theme/colors";
+import { BLACK, FERN_GREEN, MAIN_BG } from './Theme/colors';
 
 const FooterContainer = styled.footer`
   padding: 0.75rem 0rem;
@@ -41,15 +41,15 @@ const Footer = () => {
   return (
     <FooterContainer>
       <NameContainer>
-        <StyledLink>Brewtime.</StyledLink>
+        <StyledLink to="/">Brewtime.</StyledLink>
       </NameContainer>
       <CopyContainer>
         <p>
-          Made by{" "}
+          Made by{' '}
           <LinkText
-            href='https://www.github.com/ugglr'
-            target='_blank'
-            rel='noopener noreferrer'
+            href="https://www.github.com/ugglr"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Ugglr
           </LinkText>

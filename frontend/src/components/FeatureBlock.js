@@ -1,36 +1,36 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import { BLACK } from "./Theme/colors";
+import { BLACK } from './Theme/colors';
 
 const featurePoints = [
   {
-    title: "Beans",
+    title: 'Beans',
     subtitle:
-      "Dark, Medium, Light; Kenya, Columbia, Yunnan; What are you brewing with?",
+      'Dark, Medium, Light; Kenya, Columbia, Yunnan; What are you brewing with?',
   },
   {
-    title: "Water",
+    title: 'Water',
     subtitle:
-      "Have you ever payed any attention to the water you are brewing with?",
+      'Have you ever payed any attention to the water you are brewing with?',
   },
   {
-    title: "Equipment",
+    title: 'Equipment',
     subtitle: "What's your kit? Chemex, V60, Melitta. Spoon, no spoon?",
   },
   {
-    title: "Ratio",
-    subtitle: "Only grams per liter, everything else is unscientific.",
+    title: 'Ratio',
+    subtitle: 'Only grams per liter, everything else is unscientific.',
   },
   {
-    title: "Phases",
+    title: 'Phases',
     subtitle:
       "What's your bloom time? Phase 1, Phase 2, Phase 3, or just pour it in?",
   },
   {
-    title: "Drawdown",
+    title: 'Drawdown',
     subtitle:
-      "Do you watch as your slurry runs dry, or time to check some emails?",
+      'Do you watch as your slurry runs dry, or time to check some emails?',
   },
 ];
 
@@ -73,10 +73,10 @@ function FeatureBlock() {
       <NeoMorphContainer>
         {featurePoints.map(({ title, subtitle }) => {
           return (
-            <>
+            <div key={title}>
               <CardTitle>{title}</CardTitle>
               <CardSubtitle>{subtitle}</CardSubtitle>
-            </>
+            </div>
           );
         })}
       </NeoMorphContainer>

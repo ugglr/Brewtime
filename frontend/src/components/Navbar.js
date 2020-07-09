@@ -1,8 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
-import { BLACK } from "./Theme/colors";
+import { BLACK } from './Theme/colors';
 
 const NavContainer = styled.nav`
   width: 100%;
@@ -38,11 +38,11 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const Navbar = props => {
+const Navbar = (props) => {
   return (
     <NavContainer>
       <LogoContainer>
-        <StyledLink to='/'>
+        <StyledLink to="/">
           <h2>Brewtime.</h2>
         </StyledLink>
       </LogoContainer>
@@ -50,10 +50,10 @@ const Navbar = props => {
         <LinksContainer>
           <UL>
             <LI>
-              <StyledLink to='/'>Home</StyledLink>
+              <StyledLink to="/">Home</StyledLink>
             </LI>
             <LI>
-              <StyledLink to='/auth'>Login/Sign Up</StyledLink>
+              <StyledLink to="/auth">Login/Sign Up</StyledLink>
             </LI>
           </UL>
         </LinksContainer>

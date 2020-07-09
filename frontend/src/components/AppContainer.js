@@ -1,12 +1,12 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Navbar from './Navbar';
+import Footer from './Footer';
 
-import { MAIN_BG } from "./Theme/colors";
+import { MAIN_BG } from './Theme/colors';
 
-const Body = styled.body`
+const AppWrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -19,13 +19,13 @@ const ContentContainer = styled.div`
   justify-content: center;
 `;
 
-const AppContainer = props => {
+const AppContainer = (props) => {
   return (
-    <Body>
-      <Navbar />
+    <AppWrapper>
+      <Navbar showLinks />
       <ContentContainer>{props.children}</ContentContainer>
       <Footer />
-    </Body>
+    </AppWrapper>
   );
 };
 
