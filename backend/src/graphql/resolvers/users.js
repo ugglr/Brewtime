@@ -162,7 +162,7 @@ export const users = async (_, __, { user }) => {
 };
 
 // QUERY: Find a user by email
-export const findUserByEmail = async (_, { email }) => {
+export const findUserByEmail = async (_, { email }, { user }) => {
   try {
     hasPermission(user);
   } catch (permissionsError) {
