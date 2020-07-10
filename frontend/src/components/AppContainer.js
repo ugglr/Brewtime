@@ -19,11 +19,11 @@ const ContentContainer = styled.div`
   justify-content: center;
 `;
 
-const AppContainer = (props) => {
+const AppContainer = ({ children }) => {
   return (
     <AppWrapper>
       <Navbar showLinks />
-      <ContentContainer>{props.children}</ContentContainer>
+      <ContentContainer>{children}</ContentContainer>
       <Footer />
     </AppWrapper>
   );
