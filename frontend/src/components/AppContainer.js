@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
-import { MAIN_BG } from './Theme/colors';
+import { MAIN_BG } from '../theme/colors';
 
 const AppWrapper = styled.div`
   display: flex;

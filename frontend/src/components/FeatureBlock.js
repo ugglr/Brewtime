@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { BLACK } from './Theme/colors';
+import { BLACK } from '../theme/colors';
 
 const featurePoints = [
   {

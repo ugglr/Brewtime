@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { BLACK } from './Theme/colors';
+import { BLACK } from '../theme/colors';
 
 const NavContainer = styled.nav`
   width: 100%;

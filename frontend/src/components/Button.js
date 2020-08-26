@@ -1,7 +1,7 @@
-import React from "react";
-import styled, { css } from "styled-components";
+import React from 'react';
+import styled, { css } from 'styled-components';
 
-import { FERN_GREEN as PrimaryColor, PULLMAN_GREEN } from "./Theme/colors";
+import { FERN_GREEN as PrimaryColor, PULLMAN_GREEN } from '../theme/colors';
 
 const Button = styled.button`
   background: transparent;
@@ -13,7 +13,7 @@ const Button = styled.button`
   font-size: 1.5rem;
   cursor: pointer;
 
-  ${props =>
+  ${(props) =>
     props.primary &&
     css`
       background: ${PrimaryColor};
@@ -26,7 +26,7 @@ const Button = styled.button`
     `};
 `;
 
-const B = props => {
+const B = (props) => {
   if (!props.onClick) return <Button>No Onclick</Button>;
   return <Button {...props}>{props.children}</Button>;
 };

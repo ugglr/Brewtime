@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import { BLACK, FERN_GREEN, MAIN_BG } from './Theme/colors';
+import { BLACK, FERN_GREEN, MAIN_BG } from '../theme/colors';
 
 const FooterContainer = styled.footer`
   padding: 0.75rem 0rem;
