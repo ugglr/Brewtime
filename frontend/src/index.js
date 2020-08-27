@@ -4,20 +4,22 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import ApolloClient from 'apollo-boost';
-// import { gql } from 'apollo-boost';
+import ApolloClient, { gql } from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 
 const client = new ApolloClient({
-  uri: 'https://48p1r2roz4.sse.codesandbox.io',
+  uri: 'http://localhost:4000/graphql',
 });
 
 /* client
   .query({
     query: gql`
       {
-        rates(currency: "USD") {
-          currency
+        users {
+          _id
+          email
+          password
+          permission
         }
       }
     `,

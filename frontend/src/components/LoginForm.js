@@ -1,4 +1,6 @@
 import React from 'react';
+import { gql } from 'apollo-boost';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 import Button from './Button';
@@ -9,7 +11,17 @@ import {
   ErrorMsgContainer,
 } from '../theme/inputs';
 
+const LOGIN = gql`
+  mutation Login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      authToken
+    }
+  }
+`;
+
 function LoginForm() {
+  const [login, { data }] = useMutation(LOGIN);
+
   return (
     <Formik
       initialValues={{ email: '', password: '' }}
@@ -25,10 +37,11 @@ function LoginForm() {
         return errors;
       }}
       onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
+        console.log('form values: ', values);
+        login({
+          variables: { email: values.email, password: values.password },
+        });
+        console.log(data);
       }}
     >
       {({ isSubmitting }) => (
@@ -62,7 +75,7 @@ function LoginForm() {
             style={{ marginTop: '16px' }}
             type="submit"
             disabled={isSubmitting}
-            onClick={() => console.log('button clicked')}
+            onClick={() => console.log('Login submitted! 🚀')}
           >
             Login
           </Button>
