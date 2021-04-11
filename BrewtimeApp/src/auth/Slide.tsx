@@ -53,6 +53,7 @@ type SlideProps = {
   onPress: () => void;
   onBackPress: () => void;
   lastOnPress: () => void;
+  onClosePress: () => void;
 };
 
 const Slide = ({
@@ -64,12 +65,13 @@ const Slide = ({
   buttonText,
   onBackPress,
   lastOnPress,
+  onClosePress,
 }: SlideProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.controlContainer}>
         {!isLast ? (
-          <TouchableOpacity>
+          <TouchableOpacity onPress={onClosePress}>
             <AntIcon name="close" size={16} color={colors.offBlack} />
           </TouchableOpacity>
         ) : (

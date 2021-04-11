@@ -12,8 +12,9 @@ export const onboarding = {
     buttonText: 'Wow! Next!',
   },
   slide3: {
-    title: 'Powered by Open-Source',
-    body: 'This app is fully open-sourced and under development!',
+    title: 'Brew blew you mind?',
+    body:
+      'Go back and make a note of if, but write no novel, do not forget that you are a busy person.',
     buttonText: "OMG! I'm in!",
   },
 };

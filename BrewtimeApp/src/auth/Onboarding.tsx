@@ -24,7 +24,7 @@ const slides = [
     title: onboarding.slide1.title,
     body: onboarding.slide1.body,
     buttonText: onboarding.slide1.buttonText,
-    backgroundColor: colors.offWhite,
+    backgroundColor: colors.white,
   },
   {
     title: onboarding.slide2.title,
@@ -40,7 +40,7 @@ const slides = [
   },
 ];
 
-const Onboarding = () => {
+const Onboarding = ({navigation}) => {
   const x = useRef(new Animated.Value(0)).current;
   const scrollview = useRef<any>(null);
 
@@ -76,7 +76,8 @@ const Onboarding = () => {
               isLast={index === slides.length - 1}
               onPress={() => scroll(index, 'forwards')}
               onBackPress={() => scroll(index, 'backwards')}
-              lastOnPress={() => console.log('hello')}
+              onClosePress={() => navigation.navigate('login')}
+              lastOnPress={() => navigation.navigate('signUp')}
               {...{title, body, index, buttonText}}
             />
           </>
