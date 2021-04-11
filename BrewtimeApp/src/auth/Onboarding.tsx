@@ -15,14 +15,14 @@ const styles = StyleSheet.create({
 
 const slides = [
   {
-    title: 'Title1',
+    title: 'Welcome to Brewtime!',
     body: 'This is the body of slide 1',
     backgroundColor: colors.brown,
   },
   {
-    title: 'Title2',
+    title: 'Welcome to Brewtime!',
     body: 'This is the body of slide 2',
-    backgroundColor: colors.whiteShadow,
+    backgroundColor: colors.sand,
   },
 ];
 

@@ -2,6 +2,8 @@ import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import {RectButton} from 'react-native-gesture-handler';
 
+import * as colors from '../../colors';
+
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
@@ -24,7 +26,7 @@ type Props = {
 
 const Button = ({label, variant, onPress}: Props) => {
   const backgroundColor =
-    variant === 'primary' ? '#2CB9B0' : 'rgba(12,13,52, 0.05)';
+    variant === 'primary' ? colors.brown : colors.whiteShadow;
   const color = variant === 'primary' ? 'white' : '#0C0D34';
 
   return (

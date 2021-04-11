@@ -3,9 +3,9 @@ import {
   View,
   KeyboardTypeOptions,
   StyleSheet,
+  Text,
   TextInput as RNTextInput,
 } from 'react-native';
-import {Text} from '../basic';
 
 const styles = StyleSheet.create({
   container: {
