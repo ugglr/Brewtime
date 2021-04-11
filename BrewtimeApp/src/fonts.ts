@@ -1,7 +1,9 @@
 import {StyleSheet} from 'react-native';
+import * as colors from './colors';
 
 const fonts = StyleSheet.create({
   regular: {
+    color: colors.offBlack,
     fontFamily: 'SFProText-Regular',
   },
   semiBold: {
@@ -11,13 +13,25 @@ const fonts = StyleSheet.create({
     fontFamily: 'SFProText-Bold',
   },
   H1: {
+    color: colors.offBlack,
     fontFamily: 'SFProText-Regular',
     fontSize: 40,
   },
-  P: {
+  H2: {
+    color: colors.offBlack,
     fontFamily: 'SFProText-Regular',
-    fontSize: 14,
+    fontSize: 32,
+  },
+  H3: {
+    color: colors.offBlack,
+    fontFamily: 'SFProText-Regular',
+    fontSize: 24,
+  },
+  P: {
+    color: colors.offBlack,
+    fontFamily: 'SFProText-Regular',
+    fontSize: 16,
   },
 });
 
-export const {H1, P} = fonts;
+export const {regular, semiBold, bold, H1, P} = fonts;

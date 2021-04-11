@@ -25,8 +25,7 @@ type Props = {
 };
 
 const Button = ({label, variant, onPress}: Props) => {
-  const backgroundColor =
-    variant === 'primary' ? colors.brown : colors.whiteShadow;
+  const backgroundColor = variant === 'primary' ? colors.brown : colors.gray;
   const color = variant === 'primary' ? 'white' : '#0C0D34';
 
   return (
