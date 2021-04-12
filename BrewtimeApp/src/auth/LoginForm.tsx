@@ -2,14 +2,18 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Formik} from 'formik';
 
-import TextInput from '../../components/forms/TextInput';
-import Button from '../../components/basic/Button';
+import TextInput from '../components/forms/TextInput';
+import Button from '../components/basic/Button';
 
 const styles = StyleSheet.create({
+  formsContainer: {
+    width: '100%',
+  },
   inputWrapper: {
     marginTop: 20,
   },
   buttonWrapper: {
+    alignSelf: 'center',
     marginTop: 32,
   },
 });
@@ -20,7 +24,7 @@ const LoginForm = () => {
       initialValues={{email: '', password: ''}}
       onSubmit={values => console.log(values)}>
       {({handleChange, handleBlur, handleSubmit, values, errors}) => (
-        <>
+        <View style={styles.formsContainer}>
           <View style={styles.inputWrapper}>
             <TextInput
               name="email"
@@ -49,9 +53,9 @@ const LoginForm = () => {
           </View>
 
           <View style={styles.buttonWrapper}>
-            <Button onPress={handleSubmit} title="Login" />
+            <Button label="Login" variant="primary" onPress={handleSubmit} />
           </View>
-        </>
+        </View>
       )}
     </Formik>
   );

@@ -2,14 +2,15 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Formik} from 'formik';
 
-import TextInput from '../../components/forms/TextInput';
-import Button from '../../components/basic/Button';
+import TextInput from '../components/forms/TextInput';
+import Button from '../components/basic/Button';
 
 const styles = StyleSheet.create({
   inputWrapper: {
     marginTop: 20,
   },
   buttonWrapper: {
+    alignSelf: 'center',
     marginTop: 32,
   },
 });
@@ -63,7 +64,7 @@ const SignupForm = () => {
           </View>
 
           <View style={styles.buttonWrapper}>
-            <Button onPress={handleSubmit} title="Sign-up!" />
+            <Button label="Sign-up!" onPress={handleSubmit} />
           </View>
         </>
       )}
