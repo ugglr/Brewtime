@@ -25,12 +25,14 @@ const slides = [
     body: onboarding.slide1.body,
     buttonText: onboarding.slide1.buttonText,
     backgroundColor: colors.white,
+    lottie: require('../assets/lotties/coffee-time-2.json'),
   },
   {
     title: onboarding.slide2.title,
     body: onboarding.slide2.body,
     buttonText: onboarding.slide2.buttonText,
-    backgroundColor: colors.offWhite,
+    backgroundColor: colors.brown,
+    isDark: true,
   },
   {
     title: onboarding.slide3.title,
@@ -69,7 +71,7 @@ const Onboarding = ({navigation}) => {
         onScroll={Animated.event([{nativeEvent: {contentOffset: {x}}}], {
           useNativeDriver: false,
         })}>
-        {slides.map(({title, body, buttonText}, index) => (
+        {slides.map(({title, body, buttonText, lottie, isDark}, index) => (
           <>
             <Slide
               key={index}
@@ -78,7 +80,7 @@ const Onboarding = ({navigation}) => {
               onBackPress={() => scroll(index, 'backwards')}
               onClosePress={() => navigation.navigate('login')}
               lastOnPress={() => navigation.navigate('signUp')}
-              {...{title, body, index, buttonText}}
+              {...{title, body, index, buttonText, lottie, isDark}}
             />
           </>
         ))}
