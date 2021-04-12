@@ -6,6 +6,7 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
+import LottieView from 'lottie-react-native';
 
 import {AntIcon, Button} from '../components/basic';
 
@@ -31,9 +32,21 @@ const styles = StyleSheet.create({
     top: 0,
     width,
   },
+  lottieContainer: {
+    position: 'absolute',
+    top: 0,
+    width,
+  },
+  lottie: {
+    alignSelf: 'center',
+    width: width * 0.8,
+  },
   title: {
     textAlign: 'center',
     marginBottom: 20,
+  },
+  darkContent: {
+    color: colors.whiteShadow,
   },
   body: {
     textAlign: 'center',
@@ -50,6 +63,8 @@ type SlideProps = {
   isLast: boolean;
   index: number;
   buttonText: string;
+  lottie?: string;
+  isDark?: boolean;
   onPress: () => void;
   onBackPress: () => void;
   lastOnPress: () => void;
@@ -63,6 +78,8 @@ const Slide = ({
   isLast,
   index,
   buttonText,
+  lottie,
+  isDark,
   onBackPress,
   lastOnPress,
   onClosePress,
@@ -83,8 +100,17 @@ const Slide = ({
           </TouchableOpacity>
         )}
       </View>
-      <Text style={[fonts.H1, styles.title]}>{title}</Text>
-      <Text style={[fonts.P, styles.body]}>{body}</Text>
+      {!!lottie && (
+        <View style={styles.lottieContainer}>
+          <LottieView source={lottie} autoPlay loop style={styles.lottie} />
+        </View>
+      )}
+      <Text style={[fonts.H1, styles.title, isDark && styles.darkContent]}>
+        {title}
+      </Text>
+      <Text style={[fonts.P, styles.body, isDark && styles.darkContent]}>
+        {body}
+      </Text>
       <View style={styles.buttonWrapper}>
         <Button
           variant={isLast ? 'primary' : 'default'}

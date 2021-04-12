@@ -13,6 +13,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		179D969E65DD4DE9A6896890 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9A9B02BE676D4C9083B361DC /* SF-Pro-Text-Semibold.otf */; };
 		58530F4B2622F1C9000DCC85 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 58530F4A2622F1C8000DCC85 /* fonts */; };
+		58530FC02623E520000DCC85 /* lottieFix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58530FBF2623E520000DCC85 /* lottieFix.swift */; };
 		801FD68FFC5C4749A7DC3C8C /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 13085B21C7124DFA9244A76A /* SF-Pro-Text-Regular.otf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		94205A7C8BEDC6FD0645FC77 /* libPods-BrewtimeApp-BrewtimeAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DF02F42A31391A678AC00A /* libPods-BrewtimeApp-BrewtimeAppTests.a */; };
@@ -43,6 +44,8 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = BrewtimeApp/main.m; sourceTree = "<group>"; };
 		3E05B7844F9C94559A093849 /* Pods-BrewtimeApp-BrewtimeAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrewtimeApp-BrewtimeAppTests.release.xcconfig"; path = "Target Support Files/Pods-BrewtimeApp-BrewtimeAppTests/Pods-BrewtimeApp-BrewtimeAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		58530F4A2622F1C8000DCC85 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
+		58530FBE2623E520000DCC85 /* BrewtimeApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BrewtimeApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		58530FBF2623E520000DCC85 /* lottieFix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lottieFix.swift; sourceTree = "<group>"; };
 		6098E4406C5F4650A3B0696F /* SF-Pro-Text-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Text-Bold.otf"; path = "../src/assets/fonts/SF-Pro-Text-Bold.otf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = BrewtimeApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8BB66BB6309F5D852A145FB1 /* Pods-BrewtimeApp-BrewtimeAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrewtimeApp-BrewtimeAppTests.debug.xcconfig"; path = "Target Support Files/Pods-BrewtimeApp-BrewtimeAppTests/Pods-BrewtimeApp-BrewtimeAppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +128,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				58530FBF2623E520000DCC85 /* lottieFix.swift */,
 				13B07FAE1A68108700A75B9A /* BrewtimeApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* BrewtimeAppTests */,
@@ -132,6 +136,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				91E5EA5108AEEE2A899E91F5 /* Pods */,
 				89D8A8EC1B59422C908B90A2 /* Resources */,
+				58530FBE2623E520000DCC85 /* BrewtimeApp-Bridging-Header.h */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -227,7 +232,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1240;
 					};
 				};
 			};
@@ -435,6 +440,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				58530FC02623E520000DCC85 /* lottieFix.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -454,6 +460,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8BB66BB6309F5D852A145FB1 /* Pods-BrewtimeApp-BrewtimeAppTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -481,6 +488,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3E05B7844F9C94559A093849 /* Pods-BrewtimeApp-BrewtimeAppTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = BrewtimeAppTests/Info.plist;
@@ -521,6 +529,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = BrewtimeApp;
+				SWIFT_OBJC_BRIDGING_HEADER = "BrewtimeApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -546,6 +555,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = BrewtimeApp;
+				SWIFT_OBJC_BRIDGING_HEADER = "BrewtimeApp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
