@@ -12,7 +12,7 @@ export const onboarding = {
     buttonText: 'Wow! Next!',
   },
   slide3: {
-    title: 'Brew blew you mind?',
+    title: 'Brew blew your mind?',
     body:
       'Go back and make a note of if, but write no novel, do not forget that you are a busy person.',
     buttonText: "OMG! I'm in!",

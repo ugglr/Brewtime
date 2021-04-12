@@ -1,11 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   KeyboardTypeOptions,
   StyleSheet,
   Text,
   TextInput as RNTextInput,
+  TouchableOpacity,
 } from 'react-native';
+
+import {AntIcon} from '../basic';
+
+import * as fonts from '../../fonts';
+import * as colors from '../../colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -32,6 +38,11 @@ const styles = StyleSheet.create({
   },
   errorInput: {
     borderColor: 'red',
+  },
+  iconWrapper: {
+    position: 'absolute',
+    right: 12,
+    top: 9,
   },
 });
 
@@ -68,22 +79,37 @@ const TextInput = ({
   placeholder,
   secureTextEntry,
 }: FormProps) => {
+  const [maskInput, setMaskInput] = useState(secureTextEntry || false);
   const hasError = !!error;
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
-        <Text style={styles.label}>{label}</Text>
-        <Text style={styles.error}>{error}</Text>
+        <Text style={[fonts.regular, styles.label]}>{label}</Text>
+        <Text style={[fonts.regular, styles.error]}>{error}</Text>
       </View>
-      <RNTextInput
-        style={[styles.input, hasError && styles.errorInput]}
-        onChangeText={handleChange(name)}
-        onBlur={handleBlur(name)}
-        value={value}
-        keyboardType={keyboardType}
-        placeholder={placeholder}
-        secureTextEntry={secureTextEntry}
-      />
+      <View>
+        <RNTextInput
+          style={[styles.input, hasError && styles.errorInput]}
+          onChangeText={handleChange(name)}
+          onBlur={handleBlur(name)}
+          value={value}
+          keyboardType={keyboardType}
+          placeholder={placeholder}
+          secureTextEntry={maskInput}
+        />
+        {secureTextEntry && (
+          <View style={styles.iconWrapper}>
+            <TouchableOpacity
+              onPress={() => setMaskInput(maskInput ? false : true)}>
+              <AntIcon
+                name={maskInput ? 'eye' : 'eyeo'}
+                size={24}
+                color={colors.brown}
+              />
+            </TouchableOpacity>
+          </View>
+        )}
+      </View>
     </View>
   );
 };
