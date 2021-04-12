@@ -72,17 +72,15 @@ const Onboarding = ({navigation}) => {
           useNativeDriver: false,
         })}>
         {slides.map(({title, body, buttonText, lottie, isDark}, index) => (
-          <>
-            <Slide
-              key={index}
-              isLast={index === slides.length - 1}
-              onPress={() => scroll(index, 'forwards')}
-              onBackPress={() => scroll(index, 'backwards')}
-              onClosePress={() => navigation.navigate('login')}
-              lastOnPress={() => navigation.navigate('signUp')}
-              {...{title, body, index, buttonText, lottie, isDark}}
-            />
-          </>
+          <Slide
+            key={index}
+            isLast={index === slides.length - 1}
+            onPress={() => scroll(index, 'forwards')}
+            onBackPress={() => scroll(index, 'backwards')}
+            onClosePress={() => navigation.navigate('login')}
+            lastOnPress={() => navigation.navigate('signUp')}
+            {...{title, body, index, buttonText, lottie, isDark}}
+          />
         ))}
       </Animated.ScrollView>
     </Animated.View>
