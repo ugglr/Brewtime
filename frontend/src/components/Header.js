@@ -1,13 +1,13 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import MailchimpSubscribe from "react-mailchimp-subscribe";
-import SubscribeForm from "./SubscribeForm";
+import MailchimpSubscribe from 'react-mailchimp-subscribe';
+import SubscribeForm from './SubscribeForm';
 
-import { BLACK } from "./Theme/colors";
+import { BLACK } from '../theme/colors';
 
 const MAILCHIMP_URL =
-  "https://app.us19.list-manage.com/subscribe/post?u=d14a388ae39a3ae53bff9dc31&amp;id=87fb0a61c2";
+  'https://app.us19.list-manage.com/subscribe/post?u=d14a388ae39a3ae53bff9dc31&amp;id=87fb0a61c2';
 
 const HeaderContainer = styled.div`
   height: 70vh;

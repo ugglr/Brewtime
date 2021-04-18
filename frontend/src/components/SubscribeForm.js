@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import Button from "./Button";
+import Button from './Button';
 
-import { FERN_GREEN, BLACK } from "./Theme/colors";
+import { FERN_GREEN, BLACK } from '../theme/colors';
 
 const Container = styled.div`
   display: flex;
@@ -35,7 +35,7 @@ const SubscribeForm = ({ status, message, onValidated }) => {
   let email;
   const submit = () =>
     email &&
-    email.value.indexOf("@") > -1 &&
+    email.value.indexOf('@') > -1 &&
     onValidated({
       EMAIL: email.value,
     });
@@ -49,8 +49,8 @@ const SubscribeForm = ({ status, message, onValidated }) => {
       <InputContainer>
         <StyledInput
           ref={(node) => (email = node)}
-          type='email'
-          placeholder='Enter Email'
+          type="email"
+          placeholder="Enter Email"
         />
         <Button primary onClick={submit}>
           Subscribe!
@@ -58,16 +58,16 @@ const SubscribeForm = ({ status, message, onValidated }) => {
       </InputContainer>
 
       <ErrorContainer>
-        {status === "sending" && (
-          <div style={{ color: "blue" }}>sending...</div>
+        {status === 'sending' && (
+          <div style={{ color: 'blue' }}>sending...</div>
         )}
-        {status === "error" && (
+        {status === 'error' && (
           <div
-            style={{ color: "red" }}
+            style={{ color: 'red' }}
             dangerouslySetInnerHTML={{ __html: message }}
           />
         )}
-        {status === "success" && (
+        {status === 'success' && (
           <div
             style={{ color: FERN_GREEN }}
             dangerouslySetInnerHTML={{ __html: message }}
