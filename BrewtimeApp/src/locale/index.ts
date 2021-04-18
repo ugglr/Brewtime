@@ -6,14 +6,9 @@ export enum AvailableLocales {
   en = 'EN',
 }
 
-type LocaleProps = {
-  locale: 'EN' | 'SE';
-};
-
-export const getLocale = (locale: AvailableLocales) => {
+export const getTranslations = (locale: AvailableLocales) => {
   if (locale === AvailableLocales.se) {
     return SE;
   }
-
   return EN;
 };

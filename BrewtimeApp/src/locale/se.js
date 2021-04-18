@@ -1,4 +1,4 @@
-export const onboarding = {
+export const onboardingTranslations = {
   slide1: {
     title: 'Brewtime',
     body:
@@ -16,5 +16,40 @@ export const onboarding = {
     body:
       'Go back and make a note of if, but write no novel, do not forget that you are a busy person.',
     buttonText: "OMG! I'm in!",
+  },
+};
+
+export const loginScreenTranslations = {
+  title: 'Brewtime.',
+  subtitle: 'Login',
+  bottomCTA: {
+    text: "Don't have an account?",
+    linkText: 'Sign-up!',
+  },
+  mainButton: 'Login',
+};
+
+export const signUpScreenTranslations = {
+  title: 'Brewtime.',
+  subtitle: 'Sign-up!',
+  bottomCTA: {
+    text: 'Already have an account?',
+    linkText: 'Login!',
+  },
+  mainButton: 'Sign-up!',
+};
+
+export const formTranslations = {
+  emailInput: {
+    label: 'Email',
+    placeholder: 'example@email.com',
+  },
+  passwordInput: {
+    label: 'Password',
+    placeholder: 'Password123',
+  },
+  passwordConfirmInput: {
+    label: 'Password confirm',
+    placeholder: 'needs to match above',
   },
 };

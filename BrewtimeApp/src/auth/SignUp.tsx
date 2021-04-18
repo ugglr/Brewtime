@@ -1,16 +1,20 @@
 import React from 'react';
 
 import SignUpForm from './forms/SignUpForm';
-import FormsScreen from './FormsScreen';
+import FormsScreen from './components/FormsScreen';
+
+import {getTranslations, AvailableLocales} from '../locale';
+
+const {signUpScreenTranslations} = getTranslations(AvailableLocales.en);
 
 const SignUp = ({navigation}) => {
   return (
     <FormsScreen
-      title="Brewtime."
-      subtitle="Sign-up!"
+      title={signUpScreenTranslations.title}
+      subtitle={signUpScreenTranslations.subtitle}
       bottomCTA={{
-        text: 'Already have an account? ',
-        linkText: 'Login!',
+        text: signUpScreenTranslations.bottomCTA.text,
+        linkText: signUpScreenTranslations.bottomCTA.linkText,
         destination: 'login',
       }}
       {...{navigation}}>

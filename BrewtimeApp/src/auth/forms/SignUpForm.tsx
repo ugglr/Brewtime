@@ -1,9 +1,14 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Formik} from 'formik';
+import {getTranslations, AvailableLocales} from '../../locale';
 
 import TextInput from '../../components/forms/TextInput';
 import Button from '../../components/basic/Button';
+
+const {formTranslations, signUpScreenTranslations} = getTranslations(
+  AvailableLocales.en,
+);
 
 const styles = StyleSheet.create({
   inputWrapper: {
@@ -25,8 +30,8 @@ const SignupForm = () => {
           <View style={styles.inputWrapper}>
             <TextInput
               name="email"
-              label="Email"
-              placeholder="example@email.com"
+              label={formTranslations.emailInput.label}
+              placeholder={formTranslations.emailInput.placeholder}
               value={values.email}
               handleChange={handleChange}
               handleBlur={handleBlur}
@@ -38,8 +43,8 @@ const SignupForm = () => {
           <View style={styles.inputWrapper}>
             <TextInput
               name="password"
-              label="Password"
-              placeholder="password123"
+              label={formTranslations.passwordInput.label}
+              placeholder={formTranslations.passwordInput.placeholder}
               value={values.password}
               handleChange={handleChange}
               handleBlur={handleBlur}
@@ -52,8 +57,8 @@ const SignupForm = () => {
           <View style={styles.inputWrapper}>
             <TextInput
               name="passwordConfirm"
-              label="Password confirm"
-              placeholder="needs to match above"
+              label={formTranslations.passwordConfirmInput.label}
+              placeholder={formTranslations.passwordConfirmInput.placeholder}
               value={values.passwordConfirm}
               handleChange={handleChange}
               handleBlur={handleBlur}
@@ -64,7 +69,10 @@ const SignupForm = () => {
           </View>
 
           <View style={styles.buttonWrapper}>
-            <Button label="Sign-up!" onPress={handleSubmit} />
+            <Button
+              label={signUpScreenTranslations.mainButton}
+              onPress={handleSubmit}
+            />
           </View>
         </>
       )}
