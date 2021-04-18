@@ -16,11 +16,11 @@ import * as responsive from '../responsive';
 
 const {width, height} = Dimensions.get('screen');
 
+const LottieSize = width * 0.9;
+
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: responsive.sideMargin.xl,
     width,
   },
   controlContainer: {
@@ -29,17 +29,19 @@ const styles = StyleSheet.create({
     padding: 28,
     position: 'absolute',
     left: 0,
-    top: 0,
+    top: 32,
     width,
   },
   lottieContainer: {
-    position: 'absolute',
-    top: 0,
+    alignContent: 'center',
+    justifyContent: 'center',
+    marginTop: 44,
     width,
+    zIndex: -1,
   },
   lottie: {
     alignSelf: 'center',
-    width: width * 0.8,
+    width: LottieSize,
   },
   title: {
     textAlign: 'center',
@@ -48,12 +50,17 @@ const styles = StyleSheet.create({
   darkContent: {
     color: colors.whiteShadow,
   },
+  bodyContainer: {
+    width,
+    paddingHorizontal: responsive.sideMargin.xl,
+    top: -36,
+  },
   body: {
     textAlign: 'center',
   },
   buttonWrapper: {
     position: 'absolute',
-    bottom: height * 0.15,
+    bottom: height * 0.1,
   },
 });
 
@@ -89,31 +96,43 @@ const Slide = ({
       <View style={styles.controlContainer}>
         {!isLast ? (
           <TouchableOpacity onPress={onClosePress}>
-            <AntIcon name="close" size={16} color={colors.offBlack} />
+            <AntIcon
+              name="close"
+              size={16}
+              color={isDark ? colors.white : colors.offBlack}
+            />
           </TouchableOpacity>
         ) : (
           <View />
         )}
         {index !== 0 && (
           <TouchableOpacity onPress={onBackPress}>
-            <AntIcon name="left" size={16} color={colors.offBlack} />
+            <AntIcon
+              name="left"
+              size={16}
+              color={isDark ? colors.white : colors.offBlack}
+            />
           </TouchableOpacity>
         )}
       </View>
-      {!!lottie && (
+      {lottie ? (
         <View style={styles.lottieContainer}>
           <LottieView source={lottie} autoPlay loop style={styles.lottie} />
         </View>
+      ) : (
+        <View style={[styles.lottieContainer, {height: LottieSize}]} />
       )}
-      <Text style={[fonts.H1, styles.title, isDark && styles.darkContent]}>
-        {title}
-      </Text>
-      <Text style={[fonts.P, styles.body, isDark && styles.darkContent]}>
-        {body}
-      </Text>
+      <View style={styles.bodyContainer}>
+        <Text style={[fonts.H1, styles.title, isDark && styles.darkContent]}>
+          {title}
+        </Text>
+        <Text style={[fonts.P, styles.body, isDark && styles.darkContent]}>
+          {body}
+        </Text>
+      </View>
       <View style={styles.buttonWrapper}>
         <Button
-          variant={isLast ? 'primary' : 'default'}
+          variant={isLast ? 'primary' : 'secondary'}
           label={buttonText}
           onPress={isLast ? lastOnPress : onPress}
         />

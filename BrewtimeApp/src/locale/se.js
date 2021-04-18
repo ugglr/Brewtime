@@ -14,7 +14,7 @@ export const onboarding = {
   slide3: {
     title: 'Brew blew your mind?',
     body:
-      "Go back and make a note of it, but write no novel, don't forget that you are a busy person.",
+      'Go back and make a note of if, but write no novel, do not forget that you are a busy person.',
     buttonText: "OMG! I'm in!",
   },
 };

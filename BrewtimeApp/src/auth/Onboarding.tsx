@@ -4,7 +4,7 @@ import {StyleSheet, Dimensions, Animated} from 'react-native';
 import Slide from './Slide';
 
 import * as colors from '../colors';
-import {getLocale} from '../locale';
+import {getLocale, AvailableLocales} from '../locale';
 
 const {width} = Dimensions.get('screen');
 
@@ -17,14 +17,14 @@ const styles = StyleSheet.create({
   leftButtonContainer: {},
 });
 
-const {onboarding} = getLocale('EN');
+const {onboarding} = getLocale(AvailableLocales.en);
 
 const slides = [
   {
     title: onboarding.slide1.title,
     body: onboarding.slide1.body,
     buttonText: onboarding.slide1.buttonText,
-    backgroundColor: colors.white,
+    backgroundColor: colors.offWhite,
     lottie: require('../assets/lotties/coffee-time-2.json'),
   },
   {

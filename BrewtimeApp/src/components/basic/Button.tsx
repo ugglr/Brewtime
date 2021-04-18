@@ -18,19 +18,51 @@ const styles = StyleSheet.create({
   },
 });
 
+const secondaryStyles = StyleSheet.create({
+  border: {
+    borderColor: colors.brown,
+    borderWidth: 2,
+  },
+});
+
 type Props = {
   label: string;
   variant: 'default' | 'primary';
   onPress: () => void;
 };
 
-const Button = ({label, variant, onPress}: Props) => {
-  const backgroundColor = variant === 'primary' ? colors.brown : colors.gray;
-  const color = variant === 'primary' ? 'white' : '#0C0D34';
+const getButtonBackgroundColor = (variant: string): string => {
+  if (variant === 'secondary') {
+    return colors.white;
+  }
+  return colors.brown;
+};
 
+const getButtonTextColor = (variant: string): string => {
+  if (variant === 'secondary') {
+    return colors.offBlack;
+  }
+  return colors.white;
+};
+
+const getButtonBorder = (variant: string) => {
+  if (variant === 'secondary') {
+    return secondaryStyles.border;
+  }
+};
+
+const Button = ({label, variant, onPress}: Props) => {
   return (
-    <RectButton style={[styles.container, {backgroundColor}]} onPress={onPress}>
-      <Text style={[styles.label, {color}]}>{label}</Text>
+    <RectButton
+      style={[
+        styles.container,
+        {backgroundColor: getButtonBackgroundColor(variant)},
+        {...getButtonBorder(variant)},
+      ]}
+      onPress={onPress}>
+      <Text style={[styles.label, {color: getButtonTextColor(variant)}]}>
+        {label}
+      </Text>
     </RectButton>
   );
 };

@@ -2,13 +2,10 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Formik} from 'formik';
 
-import TextInput from '../components/forms/TextInput';
-import Button from '../components/basic/Button';
+import TextInput from '../../components/forms/TextInput';
+import Button from '../../components/basic/Button';
 
 const styles = StyleSheet.create({
-  formsContainer: {
-    width: '100%',
-  },
   inputWrapper: {
     marginTop: 20,
   },
@@ -18,13 +15,13 @@ const styles = StyleSheet.create({
   },
 });
 
-const LoginForm = () => {
+const SignupForm = () => {
   return (
     <Formik
-      initialValues={{email: '', password: ''}}
+      initialValues={{email: '', password: '', passwordConfirm: ''}}
       onSubmit={values => console.log(values)}>
       {({handleChange, handleBlur, handleSubmit, values, errors}) => (
-        <View style={styles.formsContainer}>
+        <>
           <View style={styles.inputWrapper}>
             <TextInput
               name="email"
@@ -52,13 +49,27 @@ const LoginForm = () => {
             />
           </View>
 
-          <View style={styles.buttonWrapper}>
-            <Button label="Login" variant="primary" onPress={handleSubmit} />
+          <View style={styles.inputWrapper}>
+            <TextInput
+              name="passwordConfirm"
+              label="Password confirm"
+              placeholder="needs to match above"
+              value={values.passwordConfirm}
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              error={errors.password}
+              keyboardType="default"
+              secureTextEntry
+            />
           </View>
-        </View>
+
+          <View style={styles.buttonWrapper}>
+            <Button label="Sign-up!" onPress={handleSubmit} />
+          </View>
+        </>
       )}
     </Formik>
   );
 };
 
-export default LoginForm;
+export default SignupForm;

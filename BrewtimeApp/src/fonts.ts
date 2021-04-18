@@ -15,7 +15,7 @@ const fonts = StyleSheet.create({
   H1: {
     color: colors.offBlack,
     fontFamily: 'SFProText-Regular',
-    fontSize: 40,
+    fontSize: 44,
   },
   H2: {
     color: colors.offBlack,
@@ -34,4 +34,4 @@ const fonts = StyleSheet.create({
   },
 });
 
-export const {regular, semiBold, bold, H1, P} = fonts;
+export const {regular, semiBold, bold, H1, H2, H3, P} = fonts;
