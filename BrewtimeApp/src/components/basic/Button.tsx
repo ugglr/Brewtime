@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactElement} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import {RectButton} from 'react-native-gesture-handler';
 
@@ -27,31 +27,31 @@ const secondaryStyles = StyleSheet.create({
 
 type Props = {
   label: string;
-  variant: 'default' | 'primary';
+  variant: 'primary' | 'secondary' | undefined;
   onPress: () => void;
 };
 
-const getButtonBackgroundColor = (variant: string): string => {
+const getButtonBackgroundColor = (variant: string | undefined): string => {
   if (variant === 'secondary') {
     return colors.white;
   }
   return colors.brown;
 };
 
-const getButtonTextColor = (variant: string): string => {
+const getButtonTextColor = (variant: string | undefined): string => {
   if (variant === 'secondary') {
     return colors.offBlack;
   }
   return colors.white;
 };
 
-const getButtonBorder = (variant: string) => {
+const getButtonBorder = (variant: string | undefined) => {
   if (variant === 'secondary') {
     return secondaryStyles.border;
   }
 };
 
-const Button = ({label, variant, onPress}: Props) => {
+const Button = ({label, variant, onPress}: Props): ReactElement => {
   return (
     <RectButton
       style={[

@@ -5,6 +5,12 @@ import {Formik} from 'formik';
 import TextInput from '../../components/forms/TextInput';
 import Button from '../../components/basic/Button';
 
+import {getTranslations, AvailableLocales} from '../../locale';
+
+const {formTranslations, loginScreenTranslations} = getTranslations(
+  AvailableLocales.en,
+);
+
 const styles = StyleSheet.create({
   formsContainer: {
     width: '100%',
@@ -28,8 +34,8 @@ const LoginForm = () => {
           <View style={styles.inputWrapper}>
             <TextInput
               name="email"
-              label="Email"
-              placeholder="example@email.com"
+              label={formTranslations.emailInput.label}
+              placeholder={formTranslations.emailInput.placeholder}
               value={values.email}
               handleChange={handleChange}
               handleBlur={handleBlur}
@@ -41,8 +47,8 @@ const LoginForm = () => {
           <View style={styles.inputWrapper}>
             <TextInput
               name="password"
-              label="Password"
-              placeholder="password123"
+              label={formTranslations.passwordInput.label}
+              placeholder={formTranslations.passwordInput.placeholder}
               value={values.password}
               handleChange={handleChange}
               handleBlur={handleBlur}
@@ -53,7 +59,11 @@ const LoginForm = () => {
           </View>
 
           <View style={styles.buttonWrapper}>
-            <Button label="Login" variant="primary" onPress={handleSubmit} />
+            <Button
+              label={loginScreenTranslations.mainButton}
+              variant="primary"
+              onPress={handleSubmit}
+            />
           </View>
         </View>
       )}

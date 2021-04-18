@@ -1,10 +1,10 @@
 import React, {useRef} from 'react';
 import {StyleSheet, Dimensions, Animated} from 'react-native';
 
-import Slide from './Slide';
+import Slide from './components/Slide';
 
 import * as colors from '../colors';
-import {getLocale, AvailableLocales} from '../locale';
+import {getTranslations, AvailableLocales} from '../locale';
 
 const {width} = Dimensions.get('screen');
 
@@ -17,27 +17,27 @@ const styles = StyleSheet.create({
   leftButtonContainer: {},
 });
 
-const {onboarding} = getLocale(AvailableLocales.en);
+const {onboardingTranslations} = getTranslations(AvailableLocales.en);
 
 const slides = [
   {
-    title: onboarding.slide1.title,
-    body: onboarding.slide1.body,
-    buttonText: onboarding.slide1.buttonText,
+    title: onboardingTranslations.slide1.title,
+    body: onboardingTranslations.slide1.body,
+    buttonText: onboardingTranslations.slide1.buttonText,
     backgroundColor: colors.offWhite,
     lottie: require('../assets/lotties/coffee-time-2.json'),
   },
   {
-    title: onboarding.slide2.title,
-    body: onboarding.slide2.body,
-    buttonText: onboarding.slide2.buttonText,
+    title: onboardingTranslations.slide2.title,
+    body: onboardingTranslations.slide2.body,
+    buttonText: onboardingTranslations.slide2.buttonText,
     backgroundColor: colors.brown,
     isDark: true,
   },
   {
-    title: onboarding.slide3.title,
-    body: onboarding.slide3.body,
-    buttonText: onboarding.slide3.buttonText,
+    title: onboardingTranslations.slide3.title,
+    body: onboardingTranslations.slide3.body,
+    buttonText: onboardingTranslations.slide3.buttonText,
     backgroundColor: colors.whiteShadow,
   },
 ];

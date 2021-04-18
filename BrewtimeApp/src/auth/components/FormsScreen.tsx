@@ -7,11 +7,11 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 
-import {sideMargin} from '../responsive';
-import SignUpForm from './forms/SignUpForm';
+import {sideMargin} from '../../responsive';
+import SignUpForm from '../forms/SignUpForm';
 
-import * as fonts from '../fonts';
-import * as colors from '../colors';
+import * as fonts from '../../fonts';
+import * as colors from '../../colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
   linkText: {
     color: 'blue',
     textDecorationLine: 'underline',
+    marginLeft: 8,
   },
 });
 
